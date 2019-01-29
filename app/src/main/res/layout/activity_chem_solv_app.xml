@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#262626"
+    tools:context=".ChemSolvApp">
+
+    <EditText
+        android:id="@+id/entry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:hint="@string/enter_here"
+        android:inputType="text"
+        android:textColorHint="#f2f2f2"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/solve_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/solution_caption"
+        android:layout_alignRight="@+id/solution_caption"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-9dp"
+        android:layout_marginRight="-9dp"
+        android:layout_marginBottom="364dp"
+        android:background="#1a1a1a"
+        android:text="@string/solve_button" />
+
+    <TextView
+        android:id="@+id/solution_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="226dp"
+        android:textSize="24sp"
+        android:text="@string/solution_text" />
+
+    <TextView
+        android:id="@+id/solution_caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="278dp"
+        android:text="@string/solution_caption" />
+
+</RelativeLayout>
