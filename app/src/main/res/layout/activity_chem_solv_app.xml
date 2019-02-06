@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#262626"
+    android:background="#FFFFFF"
     tools:context=".ChemSolvApp">
 
     <EditText
@@ -16,7 +16,7 @@
         android:layout_marginTop="75dp"
         android:hint="@string/enter_here"
         android:inputType="text"
-        android:textColorHint="#f2f2f2"
+        android:textColorHint="#000000"
         android:textSize="24sp" />
 
     <Button
@@ -29,7 +29,7 @@
         android:layout_marginEnd="-9dp"
         android:layout_marginRight="-9dp"
         android:layout_marginBottom="364dp"
-        android:background="#1a1a1a"
+        android:background="#eeeeee"
         android:text="@string/solve_button" />
 
     <TextView
@@ -40,7 +40,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="226dp"
         android:textSize="24sp"
-        android:text="@string/solution_text" />
+        android:text="@string/solution_text_initial" />
 
     <TextView
         android:id="@+id/solution_caption"

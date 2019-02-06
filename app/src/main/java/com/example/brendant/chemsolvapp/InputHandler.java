@@ -25,11 +25,10 @@ public class InputHandler
         String [] elements = find_elements(eqn);
 
         //Create a matrix of coefficients that we can actually solve
-        int [][] matrix = populate_matrix(cpds, elements);
+        float [][] matrix = populate_matrix(cpds, elements);
 
         //Now solve the matrix:
         solver = new MatrixHandler(matrix, elements, cpds, num_lhs);
-
     }
 
 
@@ -72,10 +71,10 @@ public class InputHandler
 
     /*Parameters: array of strings representing compounds in the equation, "" elements in the equation
     Return value: 2D array of ints in matrix form that can be solved mathematically to provide our answer*/
-    private int [][] populate_matrix(String [] cpds, String [] elements)
+    private float [][] populate_matrix(String [] cpds, String [] elements)
     {
-        int [][] matrix = new int[num_unique][num_terms];
-        int subscr;
+        float [][] matrix = new float[num_unique][num_terms];
+        float subscr;
 
         for(int i = 0; i < cpds.length; i++)
         {

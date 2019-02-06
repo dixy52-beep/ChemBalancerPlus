@@ -8,17 +8,18 @@ public class MatrixHandler
     private int lastCoefficient;
     private int num_lhs;
 
-    public MatrixHandler(int[][] matrix, String[] elements, String[] cpds, int num_lhs)
+    public MatrixHandler(float[][] matrix, String[] elements, String[] cpds, int num_lhs)
     {
         //solve me
-        this.matrix = new float[matrix.length][matrix[0].length];
+        this.matrix = matrix;
+        /*this.matrix = new float[matrix.length][matrix[0].length];
         for(int i = 0; i < matrix.length; i++)
         {
             for(int j = 0; j < matrix[0].length; j++)
             {
                 this.matrix[i][j] = (float)matrix[i][j];
             }
-        }
+        }*/
         print();
         this.elements = elements;
         this.cpds = cpds;
