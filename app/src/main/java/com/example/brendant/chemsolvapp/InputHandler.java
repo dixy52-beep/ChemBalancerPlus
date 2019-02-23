@@ -91,20 +91,18 @@ public class InputHandler
                     if(loc < cpds[i].length() && cpds[i].charAt(loc)  >= 49 && cpds[i].charAt(loc) <= 57)
                     {
                         subscr = cpds[i].charAt(loc) - '0';
+
+                        //If coefficient is above 10? (Rare in real world)
+                        if(loc + 1 < cpds[i].length() && cpds[i].charAt(loc + 1) >= 49 && cpds[i].charAt(loc + 1) <= 57)
+                        {
+                            subscr *= 10;
+                            subscr += cpds[i].charAt(loc + 1) - '0';
+                        }
                     }
                     else
                     {
                         subscr = 1;
                     }
-
-                    //This makes it work with coefficients above 10
-                    /*
-                    if(loc + 1 < cpds[i].length() && cpds[i].charAt(loc + 1) >= 49 && cpds[i].charAt(loc + 1) <= 57)
-                    {
-                        subscr *= 10;
-                        subscr += cpds[i].charAt(loc + 1) - '0';
-                    }
-                    */
 
                     if(i >= num_lhs && i != (num_lhs + num_rhs - 1))
                     {
