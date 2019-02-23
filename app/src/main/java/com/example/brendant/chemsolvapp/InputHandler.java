@@ -38,19 +38,20 @@ public class InputHandler
     Additionally, counts number of unique elements and saves in object field (num_unique)*/
     private String [] find_elements(String eqn)
     {
-        boolean [] match = new boolean[26];
-        String [] elements = new String[10];
+        boolean [] match = new boolean[26];     //Does a letter/string, aka element, already exist?
+        String [] elements = new String[10];    //We only hold up to 10 elements; this can be expanded.
         int count = 0;
 
+        //Parse equation string into elements.
         for(int i = 0; i < eqn.length(); i++)
         {
-            if(eqn.charAt(i) >= 65 && eqn.charAt(i) < 90) //i.e. is A-Z
+            if(eqn.charAt(i) >= 65 && eqn.charAt(i) < 90) //65 = A ... 90 = Z
             {
-                if(!match[eqn.charAt(i) - 65])
+                if(!match[eqn.charAt(i) - 65])  //Is this a new letter or have we encountered it before?
                 {
-                    if(eqn.charAt(i + 1) >= 97 && eqn.charAt(i + 1) <= 122) //i.e. is a-z
+                    if(eqn.charAt(i + 1) >= 97 && eqn.charAt(i + 1) <= 122) //97 = a ... 122 = z
                     {
-                        elements[count] = "" + eqn.charAt(i) + eqn.charAt(i + 1);
+                        elements[count] = "" + eqn.charAt(i) + eqn.charAt(i + 1);   //For element symbols w/ 2 letters e.g. Ar
                     }
                     else
                     {
@@ -65,7 +66,10 @@ public class InputHandler
         num_unique = count;
 
         String [] res = new String[num_unique];
-        System.arraycopy(elements, 0, res, 0, num_unique);
+        System.arraycopy(elements, 0, res, 0, num_unique);  //copies [num_unique] items from ELEMENTS to RES
+
+        //Returning res instead of elements means we aren't using an array of 10 empty strings
+        //Not sure if this is really necessary
         return res;
     }
 
@@ -92,11 +96,15 @@ public class InputHandler
                     {
                         subscr = 1;
                     }
-                    /*if(loc + 1 < cpds[i].length() && cpds[i].charAt(loc + 1) >= 49 && cpds[i].charAt(loc + 1) <= 57)
+
+                    //This makes it work with coefficients above 10
+                    /*
+                    if(loc + 1 < cpds[i].length() && cpds[i].charAt(loc + 1) >= 49 && cpds[i].charAt(loc + 1) <= 57)
                     {
                         subscr *= 10;
                         subscr += cpds[i].charAt(loc + 1) - '0';
-                    }*/
+                    }
+                    */
 
                     if(i >= num_lhs && i != (num_lhs + num_rhs - 1))
                     {

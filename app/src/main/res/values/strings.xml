@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Chemical Equation Solver</string>
     <string name="hello_world">hello world!</string>
-    <string name="enter_here">Enter an equation here.</string>
+    <string name="enter_here">Use caps only for now.</string>
     <string name="solve_button">SOLVE</string>
     <string name="solution_text_initial"></string>
     <string name="solution_caption">SOLUTION:</string>
