@@ -10,13 +10,14 @@
 
     <EditText
         android:id="@+id/entry"
-        android:imeOptions="actionDone"
-        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="131dp"
         android:hint="@string/enter_here"
+        android:imeOptions="actionDone"
         android:inputType="text"
         android:textColorHint="#AAAAAA"
         android:textSize="24sp" />
@@ -28,21 +29,21 @@
         android:layout_alignEnd="@+id/solution_caption"
         android:layout_alignRight="@+id/solution_caption"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="-10dp"
-        android:layout_marginRight="-10dp"
-        android:layout_marginBottom="381dp"
+        android:layout_marginEnd="-11dp"
+        android:layout_marginRight="-11dp"
+        android:layout_marginBottom="300dp"
         android:background="#eeeeee"
         android:text="@string/solve_button" />
 
     <TextView
         android:id="@+id/solution_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="310dp"
-        android:textSize="24sp"
-        android:text="@string/solution_text_initial" />
+        android:layout_marginBottom="214dp"
+        android:text="@string/solution_text_initial"
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/solution_caption"
@@ -50,16 +51,17 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="343dp"
+        android:layout_marginBottom="267dp"
         android:text="@string/solution_caption" />
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:layout_marginStart="-193dp"
-        android:layout_marginBottom="600dp"
+        android:layout_width="383dp"
+        android:layout_height="121dp"
+        android:layout_alignBottom="@+id/entry"
+        android:layout_marginStart="-384dp"
+        android:layout_marginBottom="63dp"
         android:layout_toEndOf="@+id/solution_view"
         android:contentDescription="@string/logo"
-        android:src="@drawable/header"/>
+        android:src="@drawable/header_large" />
 
 </RelativeLayout>
