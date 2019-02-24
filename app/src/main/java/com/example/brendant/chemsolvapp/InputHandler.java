@@ -8,7 +8,10 @@ public class InputHandler
 {
     private String eqn;
     private int num_terms, num_unique, num_lhs, num_rhs;
-    private MatrixHandler solver;
+    private int last_coefficient = 1;
+    private float [][] matrix;
+    private String [] cpds;
+
 
     public InputHandler(String eqn)
     {
@@ -18,17 +21,17 @@ public class InputHandler
         num_rhs = sides[1].split("[+]", 0).length;
 
         //Splits the eqn into separate compounds (= or +)
-        String [] cpds = eqn.split("[+=]|->", 0);
+        cpds = eqn.split("[+=]|->", 0);
 
         //Find what specific elements we're dealing with:
         num_terms = cpds.length;
         String [] elements = find_elements(eqn);
 
         //Create a matrix of coefficients that we can actually solve
-        float [][] matrix = populate_matrix(cpds, elements);
+        matrix = populate_matrix(cpds, elements);
 
         //Now solve the matrix:
-        solver = new MatrixHandler(matrix, elements, cpds, num_lhs);
+        gje();
     }
 
 
@@ -116,9 +119,116 @@ public class InputHandler
         return matrix;
     }
 
+    //The mathy part. Reduces matrix to its row echelon form, if possible.
+    private void gje()
+    {
+        int i, j, k, c;
+        for(i = 0; i < num_unique; i++)
+        {
+            if (matrix[i][i] == 0)
+            {
+                c = 1;
+                while (matrix[i + c][i] == 0 && (i + c) < num_unique)
+                {
+                    c++;
+                }
+                if ((i + c) == 3)
+                {
+                    break;
+                }
+                for (j = i, k = 0; k < num_terms; k++)
+                {
+                    float ph = matrix[j][k];
+                    matrix[j][k] = matrix[j + c][k];
+                    matrix[j + c][k] = ph;
+                }
+            }
+
+            for (j = 0; j < num_unique; j++)
+            {
+                if (i != j)
+                {
+                    float ratio = matrix[j][i] / matrix[i][i];
+
+                    for (k = 0; k < num_terms; k++)
+                    {
+                        matrix[j][k] = matrix[j][k] - (matrix[i][k] * ratio);
+                    }
+                }
+            }
+        }
+
+        simplify();
+        makeIntegers();
+    }
+
+    //Helper function to simplify matrix
+    private void simplify()
+    {
+        for(int i = 0; i < matrix.length; i++)
+        {
+            if(matrix[i][i] != 1)
+            {
+                matrix[i][num_terms - 1] /= matrix[i][i];
+                matrix[i][i] = 1;
+            }
+        }
+    }
+
+    //Chemical equations (typically) should use integers not fractional numbers
+    private void makeIntegers()
+    {
+        int maxSize = matrix[0].length - 1;
+        for(int i = 0; i < matrix.length; i++)
+        {
+            if(matrix[i][maxSize] != (int)matrix[i][maxSize])
+            {
+                multiplyBy(1 / (matrix[i][maxSize] - (int) matrix[i][maxSize]));
+            }
+        }
+        for(int i = 0; i < matrix.length; i++)
+        {
+            matrix[i][maxSize] = Math.round(matrix[i][maxSize]);
+        }
+    }
+
+    //Helper function to make answer have integers only
+    private void multiplyBy(float factor)
+    {
+        for(int i = 0; i < matrix.length; i++)
+        {
+            matrix[i][matrix[0].length - 1] *= factor;
+        }
+        last_coefficient *= factor;
+    }
+
+    //Formats solution correctly
     public String getSolution()
     {
-        return solver.getSolution();
+        String ret = "";
+        int maxSize = matrix[0].length - 1;
+        for(int i = 0; i < matrix.length; i++)
+        {
+            int coeff = (int)matrix[i][maxSize];
+            if(coeff != 1)
+                ret += coeff;
+            ret += cpds[i].replaceAll("\\s", "");   //remove spaces
+
+            if(i == num_lhs - 1)
+            {
+                ret += "=\t";
+            }
+            else if(i != matrix.length)
+            {
+                ret += "+\t";
+            }
+        }
+        if(last_coefficient != 1)
+        {
+            ret += Integer.toString(last_coefficient);
+        }
+        ret += cpds[cpds.length - 1].replaceAll("\\s", "");;
+        return ret;
     }
 }
 
