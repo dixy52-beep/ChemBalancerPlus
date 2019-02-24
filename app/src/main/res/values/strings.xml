@@ -5,4 +5,5 @@
     <string name="solve_button">SOLVE</string>
     <string name="solution_text_initial"></string>
     <string name="solution_caption">SOLUTION:</string>
+    <string name="logo">Logo</string>
 </resources>
