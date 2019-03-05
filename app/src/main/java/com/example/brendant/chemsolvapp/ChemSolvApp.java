@@ -30,8 +30,8 @@ public class ChemSolvApp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Solve the equation and update text view with solution.
-                String inputText = entry.getText().toString();
-                entry.onEditorAction(EditorInfo.IME_ACTION_DONE);
+                String inputText = new String(entry.getText().toString());
+                entry.onEditorAction(EditorInfo.IME_ACTION_DONE);       //close android keyboard
                 String solutionText = run(inputText);
                 soln.setText(solutionText);
             }
