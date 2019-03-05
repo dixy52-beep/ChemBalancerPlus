@@ -18,4 +18,30 @@ One of the things I thought a lot about in my struggle through organic chemistry
 
 The app works fine if an equation is solveable and has the correct syntax. It's going to need some error checking to tell whether or not a solution is findable, or provide feedback if input doesn't conform to its requirements. 
 
+# To Do
 
+Currently, the chemical equation balancer works for basic equations.
+
+Other things I want to implement:
+
+<ol>
+	<li>Expand Current Functionality</li>
+	<ul>
+		<li>Redox</li>
+		<li>Say a bit about what type of reaction was performed</li>
+	</ul>
+	<li>Resources Menu</li>
+	<ul>
+		<li>Periodic Table</li>
+		<ul>
+			<li>Zoomable?</li>
+			<li>Contains data about each element</li>
+		</ul>
+	</ul>
+	<li>Organic Chemistry Assistant</li>
+	<ul>
+		<li>Enter two functional groups</li>
+		<li>App will tell you certain reactions to get from A to B</li>
+	</ul>
+	<li>Help/About</li>
+</ol>

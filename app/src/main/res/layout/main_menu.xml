@@ -1,0 +1,28 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+<TextView
+    android:id="@+id/main_menu"
+    android:layout_width="400dp"
+    android:layout_height="50dp"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentBottom="true"
+    android:layout_marginStart="0dp"
+    android:layout_marginBottom="179dp"
+    android:gravity="center"
+    android:text="Welcome to my app"
+    android:textSize="24sp" />
+
+<Button
+    android:id="@+id/transition_eqn_solver"
+    android:layout_width="400dp"
+    android:layout_height="50dp"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentRight="true"
+    android:gravity="center"
+    android:text="Click to continue to solver"
+    android:textSize="20sp"
+    />
+
+</RelativeLayout>

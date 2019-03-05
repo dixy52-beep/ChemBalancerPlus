@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.brendant.chemsolvapp">
 
     <application
+        tools:ignore="GoogleAppIndexingWarning"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,10 +14,14 @@
         <activity android:name=".ChemSolvApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <!--<category android:name="android.intent.category.BROWSABLE" />
+                <action android:name="android.intent.action.VIEW" />-->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".MainMenu"></activity>
+        <!--activity android:name=".PeriodicTable"></activity>-->
     </application>
 
 </manifest>
