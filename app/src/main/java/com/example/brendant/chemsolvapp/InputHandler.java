@@ -183,7 +183,7 @@ public class InputHandler
         {
             if(matrix[i][maxSize] != (int)matrix[i][maxSize])
             {
-                multiplyBy(1 / (matrix[i][maxSize] - (int) matrix[i][maxSize]));
+                findIntegerFactor();
             }
         }
         for(int i = 0; i < matrix.length; i++)
@@ -192,14 +192,43 @@ public class InputHandler
         }
     }
 
-    //Helper function to make answer have integers only
-    private void multiplyBy(float factor)
-    {
-        for(int i = 0; i < matrix.length; i++)
-        {
-            matrix[i][matrix[0].length - 1] *= factor;
+        //Helper function to make answer have integers only
+    public void findIntegerFactor() {
+        for (int factor = 1; factor <= 100; factor++) {
+            float[][] newMatrix = multiplyMatrixByFactor(matrix, factor);
+
+            if (isMatrixInteger(newMatrix)) {
+                matrix = newMatrix;
+                last_coefficient *= factor;
+
+                break;
+            }
         }
-        last_coefficient *= factor;
+    }
+
+    public float[][] multiplyMatrixByFactor(float[][] inputMatrix, float factor) {
+        float[][] resultMatrix = new float[inputMatrix.length][inputMatrix[0].length];
+
+        for (int i = 0; i < inputMatrix.length; i++) {
+            for (int j = 0; j < inputMatrix[i].length; j++) {
+                resultMatrix[i][j] = inputMatrix[i][j] * factor;
+            }
+        }
+
+        return resultMatrix;
+    }
+
+    public boolean isMatrixInteger(float[][] matrix) {
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (Math.abs(matrix[i][j] - Math.round(matrix[i][j])) > 0.01) {
+                    return false; // If any element is not an integer, return false
+                }
+            }
+        }
+
+        return true; // All elements are integers
     }
 
     //Formats solution correctly
